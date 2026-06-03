@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lev Shatalov — DevOps Engineer</title>
+    <meta name="description" content="DevOps Engineer in New York — AWS, Kubernetes, Terraform. 6+ years building production infrastructure.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:           #0a0e17;
+            --bg-card:      #0f1623;
+            --bg-term:      #141925;
+            --green:        #4ade80;
+            --green-dim:    #16a34a;
+            --cyan:         #67e8f9;
+            --blue:         #60a5fa;
+            --yellow:       #fbbf24;
+            --red:          #f87171;
+            --purple:       #c084fc;
+            --text:         #e2e8f0;
+            --text-dim:     #94a3b8;
+            --text-muted:   #64748b;
+            --border:       #1e293b;
+            --border-hi:    #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            line-height: 1.7;
+        }
+
+        /* subtle scanline */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 3px,
+                rgba(0,0,0,0.025) 3px,
+                rgba(0,0,0,0.025) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10,14,23,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 500;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            color: var(--green);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.72rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--green); }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 7rem 2rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* terminal window */
+        .term-window {
+            background: var(--bg-term);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            max-width: 660px;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .term-bar {
+            background: #1c2433;
+            padding: 0.65rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-r { background: #ef4444; }
+        .dot-y { background: #f59e0b; }
+        .dot-g { background: #22c55e; }
+        .term-title {
+            margin-left: 0.6rem;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+        }
+        .term-body {
+            padding: 1.4rem 1.6rem;
+            font-size: 0.82rem;
+        }
+        .tl { margin-bottom: 0.25rem; }
+        .tp { color: var(--green); }
+        .to { color: var(--text-dim); }
+        .tc { color: var(--cyan); }
+        .ty { color: var(--yellow); }
+        .tb { color: var(--blue); }
+        .tg { color: var(--green); }
+        .cursor {
+            display: inline-block;
+            width: 7px;
+            height: 0.9em;
+            background: var(--green);
+            vertical-align: text-bottom;
+            animation: blink 1.1s step-end infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        .hero-name {
+            font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+        .hero-name span { color: var(--green); }
+        .hero-sub {
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin-bottom: 1.2rem;
+        }
+        .hero-sub span { color: var(--cyan); }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .hero-meta span { color: var(--yellow); }
+
+        .btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.48rem 1.1rem;
+            border-radius: 5px;
+            font-size: 0.78rem;
+            font-family: inherit;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.18s;
+            cursor: pointer;
+        }
+        .btn-p {
+            background: var(--green);
+            color: #000;
+            border: 1px solid var(--green);
+        }
+        .btn-p:hover { background: #22c55e; }
+        .btn-s {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border-hi);
+        }
+        .btn-s:hover { border-color: var(--green); color: var(--green); }
+
+        /* ─── STATS BAR ─── */
+        .stats-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .stats-bar {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.6rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--green);
+            letter-spacing: -0.03em;
+        }
+        .stat-label {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* ─── SECTIONS ─── */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        .sec-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.35rem;
+        }
+        .sec-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+        }
+        .sec-title span { color: var(--green); }
+        hr.div {
+            border: none;
+            border-top: 1px solid var(--border);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ─── JOB CARDS ─── */
+        .job-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        .job-card:hover { border-color: var(--border-hi); }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .job-title { font-size: 1.05rem; font-weight: 700; }
+        .job-co { color: var(--cyan); font-size: 0.85rem; margin-top: 0.15rem; }
+        .job-period {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            background: var(--bg-term);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 0.2rem 0.7rem;
+            white-space: nowrap;
+        }
+
+        /* PAR cards */
+        .par-grid { display: grid; gap: 0.85rem; }
+        .par-card {
+            background: var(--bg-term);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--green);
+            border-radius: 0 7px 7px 0;
+            padding: 0.9rem 1.2rem;
+            transition: border-left-color 0.2s;
+        }
+        .par-card:hover { border-left-color: var(--cyan); }
+        .par-metric {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 0.3rem;
+        }
+        .par-text {
+            font-size: 0.79rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+        }
+        .par-text strong { color: var(--text); }
+
+        /* ─── SKILLS ─── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.25rem;
+        }
+        .skill-cat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.4rem;
+        }
+        .skill-cat-name {
+            font-size: 0.7rem;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.9rem;
+        }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+            background: var(--bg-term);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+        }
+
+        /* ─── CERTS ─── */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.4rem 1.6rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: border-color 0.2s;
+        }
+        .cert-card:hover { border-color: var(--yellow); }
+        .cert-icon { font-size: 2rem; flex-shrink: 0; }
+        .cert-name { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .cert-sub { font-size: 0.7rem; color: var(--text-muted); }
+        .cert-year { font-size: 0.7rem; color: var(--yellow); margin-top: 0.3rem; }
+
+        /* ─── CONTACT ─── */
+        .contact-term {
+            background: var(--bg-term);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.8rem 2rem;
+            max-width: 580px;
+            font-size: 0.82rem;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── FADE IN ─── */
+        .fi {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .fi.vis { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 720px) {
+            .stats-bar { grid-template-columns: repeat(2,1fr); }
+            .nav-links { gap: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .nav-links { display: none; }
+            .stats-bar { grid-template-columns: repeat(2,1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">~/lev-shatalov</a>
+        <ul class="nav-links">
+            <li><a href="#about">/etc/profile</a></li>
+            <li><a href="#experience">/var/log/work</a></li>
+            <li><a href="#skills">/usr/bin</a></li>
+            <li><a href="#certs">/etc/certs.d</a></li>
+            <li><a href="#contact">/var/mail</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="term-window">
+        <div class="term-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+            <span class="term-title">lev@prod:~ — bash</span>
+        </div>
+        <div class="term-body">
+            <div class="tl"><span class="tp">lev@prod:~$ </span>uptime</div>
+            <div class="tl to">
+                6y 10mo active &nbsp;·&nbsp;
+                <span class="tb">2 companies</span> &nbsp;·&nbsp;
+                <span class="tg">incident resolved in 30 min</span>
+            </div>
+
+            <div class="tl" style="margin-top:.6rem"><span class="tp">lev@prod:~$ </span>cat /etc/profile</div>
+            <div class="tl to"><span class="tc">role</span>=<span class="ty">"DevOps Engineer"</span></div>
+            <div class="tl to"><span class="tc">location</span>=<span class="ty">"New York, NY"</span></div>
+            <div class="tl to"><span class="tc">stack</span>=<span class="ty">"AWS · Kubernetes · Terraform · GitLab CI"</span></div>
+
+            <div class="tl" style="margin-top:.6rem"><span class="tp">lev@prod:~$ </span>systemctl status career</div>
+            <div class="tl to"><span class="tg">● career.service</span> — DevOps Engineer @ Infor</div>
+            <div class="tl to">&nbsp;&nbsp; Active: <span class="tg">active (running)</span> since Mar 2021</div>
+
+            <div class="tl" style="margin-top:.6rem"><span class="tp">lev@prod:~$ </span><span class="cursor"></span></div>
+        </div>
+    </div>
+
+    <h1 class="hero-name">Lev <span>Shatalov</span></h1>
+    <p class="hero-sub">DevOps Engineer · <span>AWS · Kubernetes · Terraform</span></p>
+    <div class="hero-meta">
+        <span>📍 <span>New York, NY</span></span>
+        <span>⏱ <span>6+ years</span></span>
+        <span>🏆 <span>AWS SA Professional</span></span>
+        <span>⎈ <span>CKAD</span></span>
+    </div>
+    <div class="btns">
+        <a href="mailto:levgl0510@gmail.com" class="btn btn-p">✉ levgl0510@gmail.com</a>
+        <a href="https://linkedin.com/in/Lev-Shatalov/" target="_blank" class="btn btn-s">LinkedIn</a>
+        <a href="https://github.com/levsh0510" target="_blank" class="btn btn-s">GitHub</a>
+    </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-wrap">
+    <div class="stats-bar fi">
+        <div>
+            <div class="stat-num">6+</div>
+            <div class="stat-label">years of experience</div>
+        </div>
+        <div>
+            <div class="stat-num">30m</div>
+            <div class="stat-label">critical incident resolved</div>
+        </div>
+        <div>
+            <div class="stat-num">34%</div>
+            <div class="stat-label">EC2 cost cut</div>
+        </div>
+        <div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">AWS / K8s certs</div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="sec-label">/etc/profile</div>
+    <h2 class="sec-title">About <span>Me</span></h2>
+    <div class="fi" style="max-width:720px; color:var(--text-dim); font-size:0.88rem; line-height:1.85;">
+        <p>AWS Certified Solutions Architect (Professional) and CKAD-certified DevOps engineer with 6+ years building production infrastructure. I specialize in AWS, Kubernetes, Terraform, and CI/CD automation — with a track record of cutting costs, shortening pipelines, and staying calm when systems break at 3am.</p>
+        <br>
+        <p>I've designed EKS clusters from scratch, migrated 27 Jenkins jobs to GitLab CI, and resolved a CrowdStrike production incident in under 30 minutes. I build things that scale, document what I build, and take full ownership of the systems I run.</p>
+    </div>
+</section>
+
+<hr class="div">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="sec-label">/var/log/work</div>
+    <h2 class="sec-title">Experience</h2>
+
+    <!-- Infor -->
+    <div class="job-card fi">
+        <div class="job-header">
+            <div>
+                <div class="job-title">DevOps Engineer</div>
+                <div class="job-co">Infor &nbsp;·&nbsp; New York, NY</div>
+            </div>
+            <div class="job-period">Mar 2021 – Present</div>
+        </div>
+        <div class="par-grid">
+            <div class="par-card">
+                <div class="par-metric">30 min · CrowdStrike incident</div>
+                <div class="par-text">
+                    Primary on-call for two production apps. Resolved a <strong>critical CrowdStrike agent failure across Windows EC2s</strong> in under 30 minutes — scripted the remediation, restored telemetry for all affected hosts, and prevented any customer-facing service impact.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">−25% pipeline runtime · 27 jobs migrated</div>
+                <div class="par-text">
+                    Migrated all legacy <strong>Jenkins jobs to GitLab CI</strong>. Built a self-hosted GitLab Runner preloaded with build deps, wired <strong>HashiCorp Vault</strong> for secure AWS credential injection, embedded Terraform IaC stages — unifying build and deploy flows for 5 product teams.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">−34% EC2 spend · EKS from scratch</div>
+                <div class="par-text">
+                    Designed and launched a <strong>production EKS cluster</strong> with self-managed node groups using mixed spot/on-demand instances and horizontal autoscaling. Reliability improved, compute bill cut by a third.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">−30% monitoring cost · Datadog → Elastic Stack</div>
+                <div class="par-text">
+                    Replaced Datadog with <strong>EFK (Elasticsearch, Fluentd, Kibana)</strong> for Windows EC2 monitoring. Automated Elastic Agent rollout, rebuilt all dashboards and alerts from scratch, decommissioned Datadog agents entirely.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MediaMath -->
+    <div class="job-card fi">
+        <div class="job-header">
+            <div>
+                <div class="job-title">Cloud Engineer</div>
+                <div class="job-co">MediaMath &nbsp;·&nbsp; New York, NY</div>
+            </div>
+            <div class="job-period">Aug 2019 – Mar 2021</div>
+        </div>
+        <div class="par-grid">
+            <div class="par-card">
+                <div class="par-metric">−35% compute cost · EC2 → Lambda</div>
+                <div class="par-text">
+                    Replaced always-on EC2 instances with <strong>Lambda functions</strong>, moving workloads to pay-as-you-go and eliminating idle compute spend across multiple services.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">−28% ops cost · automated alerting</div>
+                <div class="par-text">
+                    Built a <strong>CloudWatch → SNS → Lambda remediation pipeline</strong> with Slack integration. Automated incident detection and response, minimizing EC2 and RDS downtime.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">−26% AMI build time · Packer</div>
+                <div class="par-text">
+                    Optimized <strong>Packer pipelines</strong> for automated AMI creation across dev and prod environments. Faster builds, consistent golden images.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">−30% deploy time · Ansible</div>
+                <div class="par-text">
+                    Streamlined server provisioning with <strong>Ansible</strong>, enforcing environment consistency and cutting deployment times by nearly a third.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="div">
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="sec-label">/usr/bin/skills</div>
+    <h2 class="sec-title">Tech <span>Stack</span></h2>
+    <div class="skills-grid">
+        <div class="skill-cat fi">
+            <div class="skill-cat-name">☁  Cloud · AWS</div>
+            <div class="tags">
+                <span class="tag">EC2</span><span class="tag">VPC</span><span class="tag">S3</span>
+                <span class="tag">Lambda</span><span class="tag">IAM</span><span class="tag">EKS</span>
+                <span class="tag">RDS / Aurora</span><span class="tag">Route 53</span>
+                <span class="tag">CloudFront</span><span class="tag">Secrets Manager</span>
+                <span class="tag">Organizations</span><span class="tag">QuickSight</span>
+                <span class="tag">Athena</span>
+            </div>
+        </div>
+        <div class="skill-cat fi">
+            <div class="skill-cat-name">⎈  Containers &amp; Orchestration</div>
+            <div class="tags">
+                <span class="tag">Kubernetes</span><span class="tag">Docker</span>
+                <span class="tag">Helm</span><span class="tag">ConfigMaps</span>
+                <span class="tag">Secrets</span><span class="tag">PVCs</span>
+            </div>
+        </div>
+        <div class="skill-cat fi">
+            <div class="skill-cat-name">⚙  IaC &amp; Automation</div>
+            <div class="tags">
+                <span class="tag">Terraform</span><span class="tag">CloudFormation</span>
+                <span class="tag">Ansible</span><span class="tag">Packer</span>
+                <span class="tag">HashiCorp Vault</span>
+            </div>
+        </div>
+        <div class="skill-cat fi">
+            <div class="skill-cat-name">↻  CI/CD</div>
+            <div class="tags">
+                <span class="tag">GitLab CI/CD</span><span class="tag">Jenkins</span>
+                <span class="tag">GitHub Actions</span>
+            </div>
+        </div>
+        <div class="skill-cat fi">
+            <div class="skill-cat-name">📊  Monitoring &amp; Logging</div>
+            <div class="tags">
+                <span class="tag">Prometheus</span><span class="tag">Grafana</span>
+                <span class="tag">CloudWatch</span><span class="tag">CloudTrail</span>
+                <span class="tag">Elasticsearch</span><span class="tag">Fluentd</span>
+                <span class="tag">Kibana</span>
+            </div>
+        </div>
+        <div class="skill-cat fi">
+            <div class="skill-cat-name">💻  Languages &amp; OS</div>
+            <div class="tags">
+                <span class="tag">Bash</span><span class="tag">Python</span>
+                <span class="tag">PowerShell</span><span class="tag">SQL</span>
+                <span class="tag">Linux</span><span class="tag">Windows Server</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="div">
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+    <div class="sec-label">/etc/certs.d</div>
+    <h2 class="sec-title">Certifications</h2>
+    <div class="certs-grid">
+        <div class="cert-card fi">
+            <div class="cert-icon">🏆</div>
+            <div>
+                <div class="cert-name">AWS Certified Solutions Architect</div>
+                <div class="cert-sub">Professional · SAP-C02</div>
+                <div class="cert-year">2025 · Highest AWS architecture cert</div>
+            </div>
+        </div>
+        <div class="cert-card fi">
+            <div class="cert-icon">☁️</div>
+            <div>
+                <div class="cert-name">AWS Certified Solutions Architect</div>
+                <div class="cert-sub">Associate · SAA-C03</div>
+                <div class="cert-year">2023</div>
+            </div>
+        </div>
+        <div class="cert-card fi">
+            <div class="cert-icon">⎈</div>
+            <div>
+                <div class="cert-name">Certified Kubernetes Application Developer</div>
+                <div class="cert-sub">CKAD · CNCF</div>
+                <div class="cert-year">2023</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="div">
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="sec-label">/var/mail</div>
+    <h2 class="sec-title">Get In <span>Touch</span></h2>
+    <div class="contact-term fi">
+        <div class="tl"><span class="tp">lev@prod:~$ </span>cat contact.json</div>
+        <div style="margin: 1rem 0; font-size: 0.82rem; line-height: 1.8;">
+            <div class="to">{</div>
+            <div class="to">&nbsp;&nbsp;<span class="tc">"email"</span>: <span class="ty">"levgl0510@gmail.com"</span>,</div>
+            <div class="to">&nbsp;&nbsp;<span class="tc">"linkedin"</span>: <span class="ty">"linkedin.com/in/Lev-Shatalov"</span>,</div>
+            <div class="to">&nbsp;&nbsp;<span class="tc">"github"</span>: <span class="ty">"github.com/levsh0510"</span>,</div>
+            <div class="to">&nbsp;&nbsp;<span class="tc">"location"</span>: <span class="ty">"New York, NY"</span></div>
+            <div class="to">}</div>
+        </div>
+        <div class="tl"><span class="tp">lev@prod:~$ </span></div>
+        <div style="margin-top: 1.2rem;">
+            <a href="mailto:levgl0510@gmail.com" class="btn btn-p">✉ Send Email</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Lev Shatalov &nbsp;·&nbsp; New York, NY</p>
+    <p style="margin-top:.3rem; font-size:.65rem; color:var(--text-muted)">lev@prod:~$ exit</p>
+</footer>
+
+<script>
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
