@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lev Shatalov — DevOps Engineer</title>
-    <meta name="description" content="DevOps Engineer in New York — AWS, Kubernetes, Terraform. 6+ years building production infrastructure.">
+    <title>Lev Shatalov — Senior DevOps / SRE Engineer</title>
+    <meta name="description" content="Senior DevOps / SRE / Cloud Engineer in New York — AWS Bedrock, Kubernetes, Terraform. 6+ years building production infrastructure.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -36,7 +36,6 @@
             line-height: 1.7;
         }
 
-        /* subtle scanline */
         body::after {
             content: '';
             position: fixed;
@@ -76,7 +75,6 @@
             font-size: 0.85rem;
             font-weight: 700;
             text-decoration: none;
-            letter-spacing: -0.01em;
         }
         .nav-links {
             list-style: none;
@@ -102,13 +100,12 @@
             margin: 0 auto;
         }
 
-        /* terminal window */
         .term-window {
             background: var(--bg-term);
             border: 1px solid var(--border);
             border-radius: 10px;
             overflow: hidden;
-            max-width: 660px;
+            max-width: 700px;
             margin-bottom: 3rem;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
@@ -123,15 +120,8 @@
         .dot-r { background: #ef4444; }
         .dot-y { background: #f59e0b; }
         .dot-g { background: #22c55e; }
-        .term-title {
-            margin-left: 0.6rem;
-            font-size: 0.68rem;
-            color: var(--text-muted);
-        }
-        .term-body {
-            padding: 1.4rem 1.6rem;
-            font-size: 0.82rem;
-        }
+        .term-title { margin-left: 0.6rem; font-size: 0.68rem; color: var(--text-muted); }
+        .term-body { padding: 1.4rem 1.6rem; font-size: 0.82rem; }
         .tl { margin-bottom: 0.25rem; }
         .tp { color: var(--green); }
         .to { color: var(--text-dim); }
@@ -157,9 +147,10 @@
         }
         .hero-name span { color: var(--green); }
         .hero-sub {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-dim);
             margin-bottom: 1.2rem;
+            line-height: 1.6;
         }
         .hero-sub span { color: var(--cyan); }
         .hero-meta {
@@ -186,25 +177,13 @@
             transition: all 0.18s;
             cursor: pointer;
         }
-        .btn-p {
-            background: var(--green);
-            color: #000;
-            border: 1px solid var(--green);
-        }
+        .btn-p { background: var(--green); color: #000; border: 1px solid var(--green); }
         .btn-p:hover { background: #22c55e; }
-        .btn-s {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border-hi);
-        }
+        .btn-s { background: transparent; color: var(--text); border: 1px solid var(--border-hi); }
         .btn-s:hover { border-color: var(--green); color: var(--green); }
 
-        /* ─── STATS BAR ─── */
-        .stats-wrap {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        /* ─── STATS ─── */
+        .stats-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
         .stats-bar {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -215,42 +194,15 @@
             gap: 1rem;
             text-align: center;
         }
-        .stat-num {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--green);
-            letter-spacing: -0.03em;
-        }
-        .stat-label {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            margin-top: 0.2rem;
-        }
+        .stat-num { font-size: 2rem; font-weight: 700; color: var(--green); letter-spacing: -0.03em; }
+        .stat-label { font-size: 0.68rem; color: var(--text-muted); margin-top: 0.2rem; }
 
         /* ─── SECTIONS ─── */
-        section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-        .sec-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 0.06em;
-            margin-bottom: 0.35rem;
-        }
-        .sec-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-        }
+        section { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+        .sec-label { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+        .sec-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 2.5rem; }
         .sec-title span { color: var(--green); }
-        hr.div {
-            border: none;
-            border-top: 1px solid var(--border);
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        hr.div { border: none; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
 
         /* ─── JOB CARDS ─── */
         .job-card {
@@ -281,6 +233,16 @@
             padding: 0.2rem 0.7rem;
             white-space: nowrap;
         }
+        .job-current {
+            font-size: 0.65rem;
+            color: var(--green);
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 4px;
+            padding: 0.15rem 0.5rem;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
 
         /* PAR cards */
         .par-grid { display: grid; gap: 0.85rem; }
@@ -293,17 +255,8 @@
             transition: border-left-color 0.2s;
         }
         .par-card:hover { border-left-color: var(--cyan); }
-        .par-metric {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--green);
-            margin-bottom: 0.3rem;
-        }
-        .par-text {
-            font-size: 0.79rem;
-            color: var(--text-dim);
-            line-height: 1.55;
-        }
+        .par-metric { font-size: 1.05rem; font-weight: 700; color: var(--green); margin-bottom: 0.3rem; }
+        .par-text { font-size: 0.79rem; color: var(--text-dim); line-height: 1.55; }
         .par-text strong { color: var(--text); }
 
         /* ─── SKILLS ─── */
@@ -318,22 +271,10 @@
             border-radius: 10px;
             padding: 1.4rem;
         }
-        .skill-cat-name {
-            font-size: 0.7rem;
-            color: var(--yellow);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 0.9rem;
-        }
+        .skill-cat-name { font-size: 0.7rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.9rem; }
         .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .tag {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.55rem;
-            border-radius: 4px;
-            background: var(--bg-term);
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-        }
+        .tag { font-size: 0.7rem; padding: 0.2rem 0.55rem; border-radius: 4px; background: var(--bg-term); border: 1px solid var(--border); color: var(--text-dim); }
+        .tag-hi { border-color: rgba(74,222,128,0.3); color: var(--green); }
 
         /* ─── CERTS ─── */
         .certs-grid {
@@ -377,11 +318,7 @@
         }
 
         /* ─── FADE IN ─── */
-        .fi {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
-        }
+        .fi { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
         .fi.vis { opacity: 1; transform: translateY(0); }
 
         /* ─── RESPONSIVE ─── */
@@ -423,26 +360,29 @@
         <div class="term-body">
             <div class="tl"><span class="tp">lev@prod:~$ </span>uptime</div>
             <div class="tl to">
-                6y 10mo active &nbsp;·&nbsp;
-                <span class="tb">2 companies</span> &nbsp;·&nbsp;
-                <span class="tg">incident resolved in 30 min</span>
+                6y+ active &nbsp;·&nbsp;
+                <span class="tb">3 companies</span> &nbsp;·&nbsp;
+                <span class="tg">45 servers recovered in 30 min</span>
             </div>
 
             <div class="tl" style="margin-top:.6rem"><span class="tp">lev@prod:~$ </span>cat /etc/profile</div>
-            <div class="tl to"><span class="tc">role</span>=<span class="ty">"DevOps Engineer"</span></div>
+            <div class="tl to"><span class="tc">role</span>=<span class="ty">"Senior DevOps / SRE / Cloud Engineer"</span></div>
             <div class="tl to"><span class="tc">location</span>=<span class="ty">"New York, NY"</span></div>
-            <div class="tl to"><span class="tc">stack</span>=<span class="ty">"AWS · Kubernetes · Terraform · GitLab CI"</span></div>
+            <div class="tl to"><span class="tc">stack</span>=<span class="ty">"AWS · Kubernetes · Terraform · AWS Bedrock"</span></div>
 
             <div class="tl" style="margin-top:.6rem"><span class="tp">lev@prod:~$ </span>systemctl status career</div>
-            <div class="tl to"><span class="tg">● career.service</span> — DevOps Engineer @ Infor</div>
-            <div class="tl to">&nbsp;&nbsp; Active: <span class="tg">active (running)</span> since Mar 2021</div>
+            <div class="tl to"><span class="tg">● career.service</span> — DevOps Engineer @ Granicus</div>
+            <div class="tl to">&nbsp;&nbsp; Active: <span class="tg">active (running)</span> since May 2024</div>
 
             <div class="tl" style="margin-top:.6rem"><span class="tp">lev@prod:~$ </span><span class="cursor"></span></div>
         </div>
     </div>
 
     <h1 class="hero-name">Lev <span>Shatalov</span></h1>
-    <p class="hero-sub">DevOps Engineer · <span>AWS · Kubernetes · Terraform</span></p>
+    <p class="hero-sub">
+        Senior DevOps / SRE / Cloud Engineer<br>
+        <span>AWS · Kubernetes · Terraform · AI-Driven Infrastructure</span>
+    </p>
     <div class="hero-meta">
         <span>📍 <span>New York, NY</span></span>
         <span>⏱ <span>6+ years</span></span>
@@ -464,12 +404,12 @@
             <div class="stat-label">years of experience</div>
         </div>
         <div>
-            <div class="stat-num">30m</div>
-            <div class="stat-label">critical incident resolved</div>
+            <div class="stat-num">45</div>
+            <div class="stat-label">servers rescued in 30 min</div>
         </div>
         <div>
-            <div class="stat-num">34%</div>
-            <div class="stat-label">EC2 cost cut</div>
+            <div class="stat-num">40%</div>
+            <div class="stat-label">EC2 cost reduction</div>
         </div>
         <div>
             <div class="stat-num">3</div>
@@ -482,10 +422,10 @@
 <section id="about">
     <div class="sec-label">/etc/profile</div>
     <h2 class="sec-title">About <span>Me</span></h2>
-    <div class="fi" style="max-width:720px; color:var(--text-dim); font-size:0.88rem; line-height:1.85;">
-        <p>AWS Certified Solutions Architect (Professional) and CKAD-certified DevOps engineer with 6+ years building production infrastructure. I specialize in AWS, Kubernetes, Terraform, and CI/CD automation — with a track record of cutting costs, shortening pipelines, and staying calm when systems break at 3am.</p>
+    <div class="fi" style="max-width:740px; color:var(--text-dim); font-size:0.88rem; line-height:1.85;">
+        <p>Senior DevOps / Site Reliability Engineer and Cloud Engineer with 6+ years designing, automating, and securing cloud-native infrastructure on AWS. Focused on bringing AI into DevOps — using AWS Bedrock to automate build pipelines and infrastructure workflows.</p>
         <br>
-        <p>I've designed EKS clusters from scratch, migrated 27 Jenkins jobs to GitLab CI, and resolved a CrowdStrike production incident in under 30 minutes. I build things that scale, document what I build, and take full ownership of the systems I run.</p>
+        <p>Track record of improving reliability, scalability, and operational health through SLO/SLI frameworks, error budget tracking, and blameless incident response. Deep expertise in CI/CD (GitLab CI, Jenkins), Infrastructure as Code (Terraform), and Kubernetes/EKS. Experienced in mentoring engineers and driving SRE culture across teams.</p>
     </div>
 </section>
 
@@ -496,38 +436,99 @@
     <div class="sec-label">/var/log/work</div>
     <h2 class="sec-title">Experience</h2>
 
-    <!-- Infor -->
+    <!-- Granicus -->
     <div class="job-card fi">
         <div class="job-header">
             <div>
-                <div class="job-title">DevOps Engineer</div>
-                <div class="job-co">Infor &nbsp;·&nbsp; New York, NY</div>
+                <div class="job-title">DevOps Engineer <span class="job-current">current</span></div>
+                <div class="job-co">Granicus &nbsp;·&nbsp; Remote (New York, NY)</div>
             </div>
-            <div class="job-period">Mar 2021 – Present</div>
+            <div class="job-period">May 2024 – Present</div>
         </div>
         <div class="par-grid">
             <div class="par-card">
-                <div class="par-metric">30 min · CrowdStrike incident</div>
+                <div class="par-metric">45 servers · 30 min · CrowdStrike outage</div>
                 <div class="par-text">
-                    Primary on-call for two production apps. Resolved a <strong>critical CrowdStrike agent failure across Windows EC2s</strong> in under 30 minutes — scripted the remediation, restored telemetry for all affected hosts, and prevented any customer-facing service impact.
+                    On-call during the global CrowdStrike outage — <strong>recovered 45 BSOD-locked production servers in 30 minutes</strong> while much of the industry stayed offline for hours. Scripted EBS root-volume swaps through a rescue host using <strong>AWS CLI + SSM</strong> to bulk-remove the faulty driver file.
                 </div>
             </div>
             <div class="par-card">
-                <div class="par-metric">−25% pipeline runtime · 27 jobs migrated</div>
+                <div class="par-metric">AI-driven AMI pipeline · 7-day process → near-zero</div>
                 <div class="par-text">
-                    Migrated all legacy <strong>Jenkins jobs to GitLab CI</strong>. Built a self-hosted GitLab Runner preloaded with build deps, wired <strong>HashiCorp Vault</strong> for secure AWS credential injection, embedded Terraform IaC stages — unifying build and deploy flows for 5 product teams.
+                    Architected an <strong>AI-driven pipeline using AWS Bedrock</strong> that fully automates monthly golden-AMI builds end to end — collapsing a 7-day manual process to near-zero effort while ensuring every image ships hardened, fully patched, and consistent across environments.
                 </div>
             </div>
             <div class="par-card">
-                <div class="par-metric">−34% EC2 spend · EKS from scratch</div>
+                <div class="par-metric">Jenkins → GitLab CI · centralized secrets</div>
                 <div class="par-text">
-                    Designed and launched a <strong>production EKS cluster</strong> with self-managed node groups using mixed spot/on-demand instances and horizontal autoscaling. Reliability improved, compute bill cut by a third.
+                    Led the migration of legacy Jenkins jobs to GitLab CI, re-engineering build/deploy logic in <strong>PowerShell and Python</strong>. Introduced <strong>HashiCorp Vault</strong> for centralized secrets management — replacing GitLab CI/CD variables and hardening credential handling across teams.
                 </div>
             </div>
             <div class="par-card">
                 <div class="par-metric">−30% monitoring cost · Datadog → Elastic Stack</div>
                 <div class="par-text">
-                    Replaced Datadog with <strong>EFK (Elasticsearch, Fluentd, Kibana)</strong> for Windows EC2 monitoring. Automated Elastic Agent rollout, rebuilt all dashboards and alerts from scratch, decommissioned Datadog agents entirely.
+                    Re-platformed monitoring from Datadog to the <strong>Elastic Stack</strong> — instrumented custom metrics, rebuilt dashboards from the ground up, and wired alerting to <strong>PagerDuty</strong> — cutting monitoring costs ~30% with no loss of visibility.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">SLO/SLI frameworks · blameless postmortems</div>
+                <div class="par-text">
+                    Established <strong>SLO/SLI frameworks and error budget tracking</strong> for critical production services — leading blameless postmortems, driving root-cause analysis, and partnering with engineering teams to reduce MTTR and improve availability targets.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">Mentoring · documentation · Confluence</div>
+                <div class="par-text">
+                    Mentored junior DevOps engineers through infrastructure code reviews and paired sessions on GitLab CI, Terraform, and CI/CD design. Led documentation initiatives in <strong>Confluence</strong> covering environment architecture, runbooks, and deployment workflows.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Infor -->
+    <div class="job-card fi">
+        <div class="job-header">
+            <div>
+                <div class="job-title">DevOps Engineer</div>
+                <div class="job-co">Infor &nbsp;·&nbsp; Remote (New York, NY)</div>
+            </div>
+            <div class="job-period">Mar 2021 – May 2024</div>
+        </div>
+        <div class="par-grid">
+            <div class="par-card">
+                <div class="par-metric">~40% EC2 cost reduction · EKS from scratch</div>
+                <div class="par-text">
+                    Designed and operated a <strong>production-grade Amazon EKS cluster</strong> with a self-managed node group using mixed spot/on-demand instances and horizontal autoscaling — boosting reliability and cutting EC2 utilization costs ~40%.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">Capacity planning · HPA/VPA tuning</div>
+                <div class="par-text">
+                    Performed ongoing <strong>capacity planning and resource utilization analysis</strong> for EKS node groups — tuning HPA/VPA configurations and mixed-instance policies to eliminate over-provisioning while sustaining headroom for peak traffic.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">Terraform · reusable IaC modules</div>
+                <div class="par-text">
+                    Built an automated infrastructure-provisioning solution with <strong>Terraform</strong>, authoring reusable EC2, VPC, and networking modules adopted across teams — streamlining deployments and improving resource utilization.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">EFK stack · centralized logging</div>
+                <div class="par-text">
+                    Implemented an <strong>EFK stack (Elasticsearch, Fluentd, Kibana)</strong> as the centralized logging solution across clusters — sharply improving visibility, troubleshooting, and debugging across services.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">Prometheus + Grafana · SLI alerting</div>
+                <div class="par-text">
+                    Deployed <strong>Prometheus and Grafana</strong> for Kubernetes metric collection and dashboards; defined SLIs and alerting thresholds aligned to service reliability targets — enabling teams to detect and resolve performance regressions proactively.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">ExternalDNS · automated Route 53</div>
+                <div class="par-text">
+                    Automated <strong>Route 53 record creation and removal with ExternalDNS</strong> — streamlining DNS management and eliminating manual errors across environments.
                 </div>
             </div>
         </div>
@@ -538,33 +539,39 @@
         <div class="job-header">
             <div>
                 <div class="job-title">Cloud Engineer</div>
-                <div class="job-co">MediaMath &nbsp;·&nbsp; New York, NY</div>
+                <div class="job-co">MediaMath &nbsp;·&nbsp; Remote (New York, NY)</div>
             </div>
             <div class="job-period">Aug 2019 – Mar 2021</div>
         </div>
         <div class="par-grid">
             <div class="par-card">
+                <div class="par-metric">AWS infrastructure · Terraform · HA at scale</div>
+                <div class="par-text">
+                    Architected and managed core AWS infrastructure through <strong>Terraform</strong> — EC2, VPC, IAM, ELB, Auto Scaling, S3, Route 53, and CloudFront — engineered for high availability, fault tolerance, and auto-scaling.
+                </div>
+            </div>
+            <div class="par-card">
                 <div class="par-metric">−35% compute cost · EC2 → Lambda</div>
                 <div class="par-text">
-                    Replaced always-on EC2 instances with <strong>Lambda functions</strong>, moving workloads to pay-as-you-go and eliminating idle compute spend across multiple services.
+                    Replaced always-on EC2 instances with <strong>Lambda functions</strong> on a pay-as-you-go model, driving a 35% compute cost reduction across multiple services.
                 </div>
             </div>
             <div class="par-card">
-                <div class="par-metric">−28% ops cost · automated alerting</div>
+                <div class="par-metric">Real-time alerting · CloudWatch → SNS → Slack</div>
                 <div class="par-text">
-                    Built a <strong>CloudWatch → SNS → Lambda remediation pipeline</strong> with Slack integration. Automated incident detection and response, minimizing EC2 and RDS downtime.
+                    Engineered real-time alerting by integrating <strong>CloudWatch alarms with Slack via SNS and Lambda</strong> — cutting mean time to detect EC2/RDS incidents and minimizing unplanned downtime.
                 </div>
             </div>
             <div class="par-card">
-                <div class="par-metric">−26% AMI build time · Packer</div>
+                <div class="par-metric">−30% AMI build time · Packer</div>
                 <div class="par-text">
-                    Optimized <strong>Packer pipelines</strong> for automated AMI creation across dev and prod environments. Faster builds, consistent golden images.
+                    Optimized <strong>Packer builds</strong> to automate customizable golden image creation for dev and production — cutting AMI build time by 30% and ensuring consistent, hardened images across environments.
                 </div>
             </div>
             <div class="par-card">
-                <div class="par-metric">−30% deploy time · Ansible</div>
+                <div class="par-metric">−20% storage cost · S3 lifecycle policies</div>
                 <div class="par-text">
-                    Streamlined server provisioning with <strong>Ansible</strong>, enforcing environment consistency and cutting deployment times by nearly a third.
+                    Implemented <strong>S3 lifecycle and data-retention policies</strong> across buckets — achieving 20% savings on annual storage costs.
                 </div>
             </div>
         </div>
@@ -579,22 +586,23 @@
     <h2 class="sec-title">Tech <span>Stack</span></h2>
     <div class="skills-grid">
         <div class="skill-cat fi">
-            <div class="skill-cat-name">☁  Cloud · AWS</div>
+            <div class="skill-cat-name">☁  Cloud &amp; AI</div>
             <div class="tags">
-                <span class="tag">EC2</span><span class="tag">VPC</span><span class="tag">S3</span>
-                <span class="tag">Lambda</span><span class="tag">IAM</span><span class="tag">EKS</span>
+                <span class="tag">AWS EC2</span><span class="tag">VPC</span><span class="tag">IAM</span>
+                <span class="tag">S3</span><span class="tag">Lambda</span><span class="tag">EKS</span>
                 <span class="tag">RDS / Aurora</span><span class="tag">Route 53</span>
-                <span class="tag">CloudFront</span><span class="tag">Secrets Manager</span>
-                <span class="tag">Organizations</span><span class="tag">QuickSight</span>
-                <span class="tag">Athena</span>
+                <span class="tag">CloudFront</span><span class="tag">EventBridge</span>
+                <span class="tag">SSM</span><span class="tag">EC2 Image Builder</span>
+                <span class="tag tag-hi">AWS Bedrock</span>
+                <span class="tag">GCP (GKE, Cloud Run)</span>
             </div>
         </div>
         <div class="skill-cat fi">
             <div class="skill-cat-name">⎈  Containers &amp; Orchestration</div>
             <div class="tags">
-                <span class="tag">Kubernetes</span><span class="tag">Docker</span>
-                <span class="tag">Helm</span><span class="tag">ConfigMaps</span>
-                <span class="tag">Secrets</span><span class="tag">PVCs</span>
+                <span class="tag">Kubernetes</span><span class="tag">Amazon EKS</span>
+                <span class="tag">Docker</span><span class="tag">Helm</span>
+                <span class="tag">ConfigMaps</span><span class="tag">Secrets</span><span class="tag">Volumes</span>
             </div>
         </div>
         <div class="skill-cat fi">
@@ -602,31 +610,52 @@
             <div class="tags">
                 <span class="tag">Terraform</span><span class="tag">CloudFormation</span>
                 <span class="tag">Ansible</span><span class="tag">Packer</span>
-                <span class="tag">HashiCorp Vault</span>
             </div>
         </div>
         <div class="skill-cat fi">
             <div class="skill-cat-name">↻  CI/CD</div>
             <div class="tags">
                 <span class="tag">GitLab CI/CD</span><span class="tag">Jenkins</span>
-                <span class="tag">GitHub Actions</span>
+                <span class="tag">GitHub Actions</span><span class="tag">ArgoCD</span>
+                <span class="tag">HashiCorp Vault</span>
             </div>
         </div>
         <div class="skill-cat fi">
-            <div class="skill-cat-name">📊  Monitoring &amp; Logging</div>
+            <div class="skill-cat-name">📊  Monitoring &amp; Observability</div>
             <div class="tags">
                 <span class="tag">Prometheus</span><span class="tag">Grafana</span>
+                <span class="tag">OpenTelemetry</span><span class="tag">Datadog</span>
+                <span class="tag">Elastic Stack (EFK/ELK)</span>
                 <span class="tag">CloudWatch</span><span class="tag">CloudTrail</span>
-                <span class="tag">Elasticsearch</span><span class="tag">Fluentd</span>
-                <span class="tag">Kibana</span>
+                <span class="tag">PagerDuty</span>
+            </div>
+        </div>
+        <div class="skill-cat fi">
+            <div class="skill-cat-name">🔒  Security</div>
+            <div class="tags">
+                <span class="tag">HashiCorp Vault</span><span class="tag">Secrets Manager</span>
+                <span class="tag">IAM</span><span class="tag">DevSecOps</span>
+                <span class="tag">Trivy</span><span class="tag">Checkov</span>
             </div>
         </div>
         <div class="skill-cat fi">
             <div class="skill-cat-name">💻  Languages &amp; OS</div>
             <div class="tags">
-                <span class="tag">Bash</span><span class="tag">Python</span>
+                <span class="tag">Bash / Shell</span><span class="tag">Python</span>
                 <span class="tag">PowerShell</span><span class="tag">SQL</span>
                 <span class="tag">Linux</span><span class="tag">Windows Server</span>
+            </div>
+        </div>
+        <div class="skill-cat fi">
+            <div class="skill-cat-name">⚡  Practices</div>
+            <div class="tags">
+                <span class="tag tag-hi">SRE</span>
+                <span class="tag tag-hi">SLO / SLI / Error Budgets</span>
+                <span class="tag">GitOps</span><span class="tag">FinOps</span>
+                <span class="tag">Blameless Postmortems</span>
+                <span class="tag">Capacity Planning</span>
+                <span class="tag">Incident Response</span>
+                <span class="tag">High Availability</span>
             </div>
         </div>
     </div>
@@ -644,15 +673,7 @@
             <div>
                 <div class="cert-name">AWS Certified Solutions Architect</div>
                 <div class="cert-sub">Professional · SAP-C02</div>
-                <div class="cert-year">2025 · Highest AWS architecture cert</div>
-            </div>
-        </div>
-        <div class="cert-card fi">
-            <div class="cert-icon">☁️</div>
-            <div>
-                <div class="cert-name">AWS Certified Solutions Architect</div>
-                <div class="cert-sub">Associate · SAA-C03</div>
-                <div class="cert-year">2023</div>
+                <div class="cert-year">April 2025 · Highest AWS architecture cert</div>
             </div>
         </div>
         <div class="cert-card fi">
@@ -660,7 +681,15 @@
             <div>
                 <div class="cert-name">Certified Kubernetes Application Developer</div>
                 <div class="cert-sub">CKAD · CNCF</div>
-                <div class="cert-year">2023</div>
+                <div class="cert-year">July 2023</div>
+            </div>
+        </div>
+        <div class="cert-card fi">
+            <div class="cert-icon">☁️</div>
+            <div>
+                <div class="cert-name">AWS Certified Solutions Architect</div>
+                <div class="cert-sub">Associate · SAA-C03</div>
+                <div class="cert-year">May 2023</div>
             </div>
         </div>
     </div>
