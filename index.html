@@ -447,12 +447,6 @@
         </div>
         <div class="par-grid">
             <div class="par-card">
-                <div class="par-metric">45 servers · 30 min · CrowdStrike outage</div>
-                <div class="par-text">
-                    On-call during the global CrowdStrike outage — <strong>recovered 45 BSOD-locked production servers in 30 minutes</strong> while much of the industry stayed offline for hours. Scripted EBS root-volume swaps through a rescue host using <strong>AWS CLI + SSM</strong> to bulk-remove the faulty driver file.
-                </div>
-            </div>
-            <div class="par-card">
                 <div class="par-metric">AI-driven AMI pipeline · 7-day process → near-zero</div>
                 <div class="par-text">
                     Architected an <strong>AI-driven pipeline using AWS Bedrock</strong> that fully automates monthly golden-AMI builds end to end — collapsing a 7-day manual process to near-zero effort while ensuring every image ships hardened, fully patched, and consistent across environments.
@@ -471,15 +465,21 @@
                 </div>
             </div>
             <div class="par-card">
-                <div class="par-metric">SLO/SLI frameworks · blameless postmortems</div>
+                <div class="par-metric">45 servers · 30 min · CrowdStrike outage</div>
                 <div class="par-text">
-                    Established <strong>SLO/SLI frameworks and error budget tracking</strong> for critical production services — leading blameless postmortems, driving root-cause analysis, and partnering with engineering teams to reduce MTTR and improve availability targets.
+                    On-call during the global CrowdStrike outage — <strong>recovered 45 BSOD-locked production servers in 30 minutes</strong> while much of the industry stayed offline for hours. Scripted EBS root-volume swaps through a rescue host using <strong>AWS CLI + SSM</strong> to bulk-remove the faulty driver file.
                 </div>
             </div>
             <div class="par-card">
                 <div class="par-metric">Mentoring · documentation · Confluence</div>
                 <div class="par-text">
                     Mentored junior DevOps engineers through infrastructure code reviews and paired sessions on GitLab CI, Terraform, and CI/CD design. Led documentation initiatives in <strong>Confluence</strong> covering environment architecture, runbooks, and deployment workflows.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">SLO/SLI frameworks · blameless postmortems</div>
+                <div class="par-text">
+                    Established <strong>SLO/SLI frameworks and error budget tracking</strong> for critical production services — leading blameless postmortems, driving root-cause analysis, and partnering with engineering teams to reduce MTTR and improve availability targets.
                 </div>
             </div>
         </div>
@@ -499,12 +499,6 @@
                 <div class="par-metric">~40% EC2 cost reduction · EKS from scratch</div>
                 <div class="par-text">
                     Designed and operated a <strong>production-grade Amazon EKS cluster</strong> with a self-managed node group using mixed spot/on-demand instances and horizontal autoscaling — boosting reliability and cutting EC2 utilization costs ~40%.
-                </div>
-            </div>
-            <div class="par-card">
-                <div class="par-metric">Capacity planning · HPA/VPA tuning</div>
-                <div class="par-text">
-                    Performed ongoing <strong>capacity planning and resource utilization analysis</strong> for EKS node groups — tuning HPA/VPA configurations and mixed-instance policies to eliminate over-provisioning while sustaining headroom for peak traffic.
                 </div>
             </div>
             <div class="par-card">
@@ -529,6 +523,12 @@
                 <div class="par-metric">ExternalDNS · automated Route 53</div>
                 <div class="par-text">
                     Automated <strong>Route 53 record creation and removal with ExternalDNS</strong> — streamlining DNS management and eliminating manual errors across environments.
+                </div>
+            </div>
+            <div class="par-card">
+                <div class="par-metric">Capacity planning · HPA/VPA tuning</div>
+                <div class="par-text">
+                    Performed ongoing <strong>capacity planning and resource utilization analysis</strong> for EKS node groups — tuning HPA/VPA configurations and mixed-instance policies to eliminate over-provisioning while sustaining headroom for peak traffic.
                 </div>
             </div>
         </div>
